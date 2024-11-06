@@ -1,4 +1,8 @@
 from celery import Celery
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
 
 redis_host = os.getenv("REDIS_DB_HOSTNAME")
 redis_port = os.getenv("REDIS_DB_PORT")
