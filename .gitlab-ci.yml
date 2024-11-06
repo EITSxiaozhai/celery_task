@@ -4,16 +4,23 @@ stages:
   - deploy
   - clean
 
+variables:
+  IMAGE_TAG: celery:$CI_PIPELINE_ID
+
 Celery_image_build:
   stage: build
+  image: docker:19.03
+  services:
+    - docker:19.03-dind
   script:
     - echo "Celery build, Dockerfile:"
     - cat Dockerfile
-    - docker build  -t celery:$CI_PIPELINE_ID .
-  
-Celery_container_deploy1:
-    stage: deploy
-    script:
-      - docker run --name celery-container -d $IMAGE_TAG
-      
+    - docker build -t $IMAGE_TAG .
 
+Celery_container_deploy1:
+  stage: deploy
+  image: docker:19.03
+  services:
+    - docker:19.03-dind
+  script:
+    - docker run --name celery-container -d $IMAGE_TAG
