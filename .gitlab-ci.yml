@@ -25,13 +25,3 @@ Celery_container_deploy1:
     - docker:19.03-dind
   script:
     - docker run --name $CONTAINER_NAME -d $IMAGE_TAG
-
-clean:
-  stage: clean
-  image: docker:19.03
-  services:
-    - docker:19.03-dind
-  script:
-    - docker rm -f $(docker ps -a -q -f "name=celery-container-")  # 删除所有以 celery-container- 命名的容器
-    - docker rmi $(docker images -q $IMAGE_TAG)  # 非强制删除过去构建的镜像
-  when: always
