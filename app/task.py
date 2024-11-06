@@ -3,6 +3,8 @@ import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from dotenv import load_dotenv
+import smtplib
+
 load_dotenv()
 
 db_password = os.getenv("REDIS_DB_PASSWORD")
