@@ -16,6 +16,11 @@ mq_host = os.getenv("MQ_HOSTNAME")
 mq_dbname = os.getenv("MQ_DBNAME")
 mq_port = os.getenv("MQ_DBPORT")
 
+SMTPSERVER = os.getenv("SMTPSERVER")
+SMTPPORT = os.getenv("SMTPPORT")
+SMTPUSER = os.getenv("SMTPUSER")
+SMTPPASSWORD = os.getenv("SMTPPASSWORD")
+
 
 celery_app = Celery('task', broker=f'amqp://{mq_username}:{mq_password}@{mq_host}:{mq_port}/{mq_dbname}',
                     backend=f'redis://:{db_password}@{redis_host}:{redis_port}/{redis_db}')
