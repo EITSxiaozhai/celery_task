@@ -15,4 +15,4 @@ COPY ./app /tmp/celery_data/
 ENV PYTHONUNBUFFERED 1
 
 # 这里我们只是演示如何打包，不自动启动Celery
-CMD ["celery", "-A", "tasks", "worker", "--loglevel=info"]
+CMD ["celery", "-A", "task", "worker", "--loglevel=info"]
