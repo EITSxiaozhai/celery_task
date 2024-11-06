@@ -32,7 +32,7 @@ celery_app = Celery('task', broker=f'amqp://{mq_username}:{mq_password}@{mq_host
 def add(x, y):
     return x + y
 
-@celery_app.task(name="send_mail")
+@celery_app.task(name="sendmail")
 def send_activation_email(email, activation_code):
     print("Sending activation email")
 
