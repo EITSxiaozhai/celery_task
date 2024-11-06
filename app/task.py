@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+db_password = os.getenv("REDIS_DB_PASSWORD")
 redis_host = os.getenv("REDIS_DB_HOSTNAME")
 redis_port = os.getenv("REDIS_DB_PORT")
 redis_db = os.getenv("REDIS_DB_NAME")
