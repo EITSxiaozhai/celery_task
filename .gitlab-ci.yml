@@ -1,0 +1,26 @@
+stages:
+  - build
+  - test
+
+variables:
+  DOCKER_IMAGE_TAG: $CI_REGISTRY_IMAGE/celery-image:$CI_COMMIT_REF_SLUG
+
+build_image:
+  stage: build
+  image: docker:19.03.12
+  services:
+    - docker:19.03.12-dind
+  variables:
+    DOCKER_DRIVER: overlay2
+  script:
+    - docker build -t $DOCKER_IMAGE_TAG .
+    - docker image ls
+
+test:
+  stage: test
+  image: $DOCKER_IMAGE_TAG
+  script:
+    - echo "Running tests with Celery..."
+    - celery --version
+  only:
+    - master
