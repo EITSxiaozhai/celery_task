@@ -9,7 +9,7 @@ Celery_image_build:
   script:
     - echo "Celery build, Dockerfile:"
     - cat Dockerfile
-    - docker build  -t Celery:$CI_PIPELINE_ID .
+    - docker build  -t Cecery:$CI_PIPELINE_ID .
   
 Celery_container_deploy1:
     stage: deploy
